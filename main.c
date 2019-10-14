@@ -1,38 +1,17 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
+#include "leitura.h"
 
 int main(void)
 {
-	int c;
-	FILE* file;
-	if ((file = fopen("resources/gr24.txt", "r")) == NULL) 
-	{   
-		printf("falhou vacilao.\n"); 
-	}
-	else
-	{
-		/*bool esp = false;
-		bool zero = false;*/
-		while ((c = getc(file)) != EOF)
-		{
-			putchar(c);
-			/*if (c == 32)
-				esp = true;
+	char ewt[30], ewf[30], ddt[30];
+	int dimension;
 
-			else if (esp == true)
-				if (c == 48)
-					zero = true;
+	le_arquivo(&dimension, ewt, ewf, ddt);
+	
+	printf("%s\n", ewt);
 
-			else if (zero == true)
-			{
-				printf("\n");
-				esp = false;
-				zero = false;
-			}*/			
-		}
-		printf("\n");
-		fclose(file);
-	}
 	return 0;
 }
