@@ -6,7 +6,7 @@ void le_arquivo(int *dimension, char *EDGE_WEIGHT_TYPE, char *EDGE_WEIGHT_FORMAT
 	FILE* file;
 	char line[30];
 	char name[30], type[30], comment[30];
-	int ini = 1; // variavel de controle para leitura do cabeçalho
+	int ini = 1; // variavel de controle para leitura do cabeÃ§alho
 
 
 	if ((file = fopen("gr24.tsp", "r")) == NULL)
