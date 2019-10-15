@@ -19,17 +19,13 @@ def KirkpatrickCooling (startTemp, alpha):
 def p(delta,temp):
         return exp(-delta/temp)
 
-"""
-        -A chance de aceitar um vizinho pior diminui a cada solucao que se aceita
-        -exaustion_criteria eh o numero de vizinhos que o algoritmo tem que avaliar antes de parar
-"""
 def CreateInitialSolution (problem):
         initialSolution = list(problem.get_nodes())
         shuffle(initialSolution)
 
         return initialSolution
 
-def RouteDistance (route , dist): # calcula a distancia do percurso
+def RouteDistance (route , dist):
 
         total = 0
         cardCities = len(route)
@@ -71,15 +67,15 @@ def SimulatedAnnealing(startTemp,alpha,exaustionCrit, problem):
         '''
         cooling = KirkpatrickCooling(startTemp,alpha)
 
-        #a cada temperatura, visita-se vizinhos ate trocar com um deles
+        #a cada temperatura, visita vizinhos ate trocar com algum
         for temp in cooling:
 
-                #swaped permite a iteracao no conjunto dos vizinhos numa mesma temperatura
+                #swaped permite a iteracao no conjunto dos vizinhos numa dada temperatura
                 swaped = False
 
                 comparisions = 1
 
-                #visita a cada vizinho
+                #visita vizinho
                 while not swaped:
                         #pede novo vizinho qualquer
                         solution = GetRandomNeighbour(current)
@@ -101,7 +97,7 @@ def SimulatedAnnealing(startTemp,alpha,exaustionCrit, problem):
                                         swaped = True
                                         print("ok")
                                         continue
-                        #print("Comparisions = "+str(comparisions)+"\tEval"+str(current_eval)+"\tTemp:"+str(temp))
+
                         comparisions+=1
                         if comparisions == exaustionCrit:
                                 print("\nComparisions: " + str(comparisions))
@@ -113,3 +109,5 @@ if __name__ =="__main__":
         (best, bestEval) = SimulatedAnnealing(5000,0.99,20000,problem)
         print("Best Evaluation: ", bestEval,"\nRoute:", best)
         print("Elapsed time = %f s" % time.process_time())
+        
+        
